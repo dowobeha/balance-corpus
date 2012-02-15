@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="Balance Corpus" default="compile">
+
+  <target name="compile">
+    <mkdir dir="bin"/>
+    <javac srcdir="src" destdir="bin"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="bin"/>
+    <delete file="balance.jar"/>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="balance.jar">
+      <fileset dir="bin" includes="**/*.class"/>
+    </jar>
+  </target>
+
+</project>
