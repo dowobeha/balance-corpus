@@ -1,3 +1,8 @@
 *~
 bin
 balance.jar
+doc/latex/paper.aux
+doc/latex/paper.bbl
+doc/latex/paper.blg
+doc/latex/paper.log
+doc/latex/paper.pdf
