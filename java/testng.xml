@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- 
+	Test suite for Balance Corpus 
+	Authors: Lane Schwartz
+-->
+
+<suite name="TestSuite"    verbose="1" >
+
+  <test name="Balance corpus" >
+    <classes>
+       <class name="distribute.split.NaiveFileSplitTest" />    
+       <class name="distribute.split.NaiveListSplitTest" />    
+       <class name="distribute.split.HistogramFileSplitTest" />    
+       <class name="distribute.split.HistogramListSplitTest" />    
+       <class name="distribute.split.WordsFileSplitTest" />    
+       <class name="distribute.split.WordsListSplitTest" />    
+    </classes>
+  </test>
+  
+</suite>

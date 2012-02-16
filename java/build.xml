@@ -1,20 +1,48 @@
 <?xml version="1.0"?>
 <project name="Balance Corpus" default="compile">
 
-  <target name="compile">
-    <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin"/>
+<!-- Variables -->
+
+  <property name="src"    value="src"         />
+  <property name="test"   value="test"        />
+  <property name="build"  value="bin"         />
+  <property name="lib"    value="lib"         />
+  <property name="jar"    value="balance.jar" />
+  <property name="testng" value="${lib}/testng-6.4.jar" />
+
+
+<!-- Task definitions -->
+
+<taskdef resource="testngtasks" classpath="${testng}"/>
+
+
+<!-- Tasks -->
+
+  <target name="init">
+    <tstamp />
+    <mkdir dir="bin" />
+  </target>
+
+  <target name="compile" depends="init">    
+    <javac srcdir="${src}" destdir="${build}" encoding="utf8" />
   </target>
 
   <target name="clean">
-    <delete dir="bin"/>
-    <delete file="balance.jar"/>
+    <delete dir="${build}"/>
+    <delete file="${jar}"/>
   </target>
 
   <target name="jar" depends="compile">
-    <jar destfile="balance.jar">
-      <fileset dir="bin" includes="**/*.class"/>
+    <jar destfile="${jar}">
+      <fileset dir="${build}" includes="**/*.class"/>
     </jar>
+  </target>
+
+  <target name="test" depends="compile">
+    <javac srcdir="${test}" destdir="${build}" classpath="${testng}" encoding="utf8" />
+    <testng classpath="${build}" >
+      <xmlfileset dir="." includes="testng.xml" />
+    </testng>
   </target>
 
 </project>
