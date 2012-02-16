@@ -171,7 +171,7 @@ bar shift=0pt
 %%%%%%%%%%%%%%%%%%%%%%% 
 % Begin subfloat
 %%%%%%%%%%%%%%%%%%%%%%%
-\subfloat[Decoding times in \textbf{hours} for decoder configured using a syntactic language model in addition to a 5-gram language model.]{
+\subfloat[Decoding times in \textbf{hours} for decoder configured using a syntactic language model (Schwartz et al., 2011) in addition to a 5-gram language model.]{
 \begin{tikzpicture}%[scale=2]
 \begin{axis}[
 xmode=log,
@@ -212,7 +212,7 @@ bar shift=0pt
 \subfloat[Decoding times in \textbf{seconds} for standard decoder configured using a 5-gram language model.]{
 \input{ngram/ngram.max-min-table.tex}
 } \\
-\subfloat[Decoding times in \textbf{hours} for decoder configured using a syntactic language model in addition to a 5-gram language model.]{
+\subfloat[Decoding times in \textbf{hours} for decoder configured using a syntactic language model (Schwartz et al., 2011) addition to a 5-gram language model.]{
 \input{hhmm/hhmm.max-min-table.tex}
 }
 \caption{Decoding times for the fastest (min) and slowest (max) decoding jobs when a translation task is split into $n$ decoding jobs. \textit{Italics} indicate balanced task times. \textbf{Bold} indicates fastest max time at that split.}
@@ -265,7 +265,7 @@ bar shift=0pt
 %%%%%%%%%%%%%%%%%%%%%%% 
 % Begin subfloat
 %%%%%%%%%%%%%%%%%%%%%%%
-\subfloat[Slack \textbf{CPU-Hours} for decoder configured using a syntactic language model in addition to a 5-gram language model.]{
+\subfloat[Slack \textbf{CPU-Hours} for decoder configured using a syntactic language model (Schwartz et al., 2011) in addition to a 5-gram language model.]{
 \begin{tikzpicture}
 \begin{axis}[
 xmode=log,
@@ -303,7 +303,7 @@ bar shift=0pt
 
 \section{Better Splitting for Faster Results}
 
-To observe the effects of splitting algorithms on decoding speed, we translated Urdu-English data using Moses in a parallel computing cluster, distributing work using the Sun Grid Engine. We ran two decoding setups: a standard configuration using a 5-gram language model, and a much slower configuration that also used an incremental syntactic language model. Using Algorithm \ref{alg:naive}, the runtimes of the slowest of $n$ translation jobs in each configuration is illustrated in Figure \ref{fig:maxspeed} for various values of $n$. Figure \ref{fig:minmaxspeed} shows that in all cases, there is a significant difference between the fastest and slowest translation job, leading to computational slack time (Figure \ref{fig:slack}).
+To observe the effects of splitting algorithms on decoding speed, we translated Urdu-English data using Moses in a parallel computing cluster, distributing work using the Sun Grid Engine. We ran two decoding setups: a standard configuration using a 5-gram language model, and a much slower syntactic LM configuration following \newcite{schwartzetal11}. Using Algorithm \ref{alg:naive}, the runtimes of the slowest of $n$ translation jobs in each configuration is illustrated in Figure \ref{fig:maxspeed} for various values of $n$. Figure \ref{fig:minmaxspeed} shows that in all cases, there is a significant difference between the fastest and slowest translation job, leading to computational slack time (Figure \ref{fig:slack}).
 
 %While the models in Equation \ref{eq:smt} could, in theory, condition on previously translated sentences, in practice virtually no widely used models do so. It is therefore very straightforward to split the data into $p$ parts, and translate each part independently on $p$ computational nodes. The question then arises - how should the data be split? Algorithm \ref{alg:naive} naively splits the data into $p$ arbitrary parts such that each part contains the same number of lines. This algorithm is currently implemented and distributed in Moses \cite{moses}.
 
