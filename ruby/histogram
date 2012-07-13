@@ -1,0 +1,19 @@
+#!/usr/bin/ruby -w
+
+histogram = Hash.new {|k,v| k[v]=0}
+
+
+STDIN.each_line { |line|
+
+	words=line.strip.split
+
+	histogram[words.length] += 1
+
+}
+
+
+histogram.keys.sort.each { |key|
+
+	puts "Lines of length #{key}:	#{histogram[key]}"
+
+}
