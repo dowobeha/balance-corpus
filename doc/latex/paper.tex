@@ -118,15 +118,15 @@ While the models in Equation \ref{eq:smt} could, in theory, condition on previou
 \begin{algorithmic}
 \fontspec{TeX Gyre Pagella}
 \Function{\fontspec{TeX Gyre Pagella}\textsc{Naive-Split}}{$n$,input}
-\State $\ell \gets n / $ input.length
+\State $\ell \gets \lceil$ input.length$ / n\rceil$
 \For {$p \gets 0 \ldots (n-1)$}
 \State $i \gets \ell \times p$
-\For {$j \gets i \ldots (i+\ell-1)$}
-\If{$j < \ell$}
+\For {$j \gets i \ldots \min(i+\ell-1$,input.length$-1)$}
+%\If{$j < \ell$}
 \State output[$p$].append(input[$j$])
-\Else
-\State \textbf{break}
-\EndIf
+%\Else
+%\State \textbf{break}
+%\EndIf
 \EndFor
 \EndFor
 \State \textbf{return} output
