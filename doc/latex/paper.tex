@@ -396,7 +396,7 @@ There is substantial variance in translation time between the parts in Figure \r
 \State \Comment{Sort sentences by length}
 \State $p \gets n$
 \For {$i \gets 0 \ldots ($input.length $-1)$}
-\If {$p < n$}
+\If {$p < n-1$}
 \State $p \gets p+1$
 \Else
 \State $p \gets 0$
@@ -802,7 +802,7 @@ While statistical translation models could, in theory, condition on previously t
 %The task of translating a document is therefore embarrassingly parallel.
 Translation is therefore embarrassingly parallel ---
 %
-a document to be translated can be split into $n$ parts, with each part translated independently a different computational node.
+a document to be translated can be split into $n$ parts, with each part translated independently on a different computational node.
 
 While such splitting is commonly performed, a suboptimal naive splitting technique (Algorithm \ref{alg:naive}) is used by all translation software of which we are aware. 
 %
@@ -810,7 +810,7 @@ In this work we have presented three more effective corpus splitting algorithms 
 %the Moses decoding scripts,
 %{\tt moses-parallel.pl},
 % 
-enabling substantial speed-ups in parallel decoding time at no additional cost.
+enabling substantial speed-ups in parallel decoding time at virtually no additional cost.
 
 We observe that while Algorithm \ref{alg:histogram} fails to improve over Algorithm \ref{alg:naive} for a standard Moses configuration for small values of $n$, for values of $n>8$, and for all values of $n$ using the slow syntactic language model, Algorithm \ref{alg:histogram} represents a clear improvement. Results for Algorithm \ref{alg:words} show further speedups over Algorithms \ref{alg:naive} and \ref{alg:histogram} in most configurations. Algorithm \ref{alg:times} is the clear winner, nearly eliminating slack time in many cases.
 
